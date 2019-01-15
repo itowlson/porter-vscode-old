@@ -14,8 +14,7 @@
         "onLanguage:yaml"
     ],
     "main": "./out/extension",
-    "contributes": {
-    },
+    "contributes": {},
     "scripts": {
         "vscode:prepublish": "npm run compile",
         "compile": "tsc -p ./",
@@ -26,6 +25,9 @@
     "extensionDependencies": [
         "redhat.vscode-yaml"
     ],
+    "dependencies": {
+        "yaml-ast-parser": "^0.0.43"
+    },
     "devDependencies": {
         "typescript": "^2.6.1",
         "vscode": "^1.1.6",
