@@ -8,7 +8,17 @@ export class PorterCompletionItemProvider implements vscode.CompletionItemProvid
         if (positionKind !== YAMLPositionKind.Value) {
             return [];  // for now
         }
-        const ci = new vscode.CompletionItem("bundle.dependencies", vscode.CompletionItemKind.Constant);
-        return [ci];
+        return credentialsCompletionItems()
+                .concat(dependenciesCompletionItems());
     }
+}
+
+function dependenciesCompletionItems(): vscode.CompletionItem[] {
+    const dependencies = ['mysql', 'yoursql'];
+    return dependencies.map((d) => new vscode.CompletionItem(`bundle.dependencies.${d}.outputs.host`));
+}
+
+function credentialsCompletionItems(): vscode.CompletionItem[] {
+    const credentials = ['sekrit', 'soopersekrit'];
+    return credentials.map((c) => new vscode.CompletionItem(`bundle.credentials.${c}`));
 }
